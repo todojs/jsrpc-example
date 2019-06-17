@@ -34,7 +34,7 @@ const students = {
     }
     return {errors, data : await db.update ({_id : id}, {$set : data}, {returnUpdatedDocs : true})};
   },
-  async list (query = {}, sort = {name : 1}) {
+  async list (query = {}, sort = {name : 1, lastname: 1}) {
     return {errors : [], data : await db.find (query).sort (sort)};
   },
   async get (id) {
