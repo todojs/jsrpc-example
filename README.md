@@ -3,6 +3,14 @@
 Simple jsRPC use example. All comunicatio from browser to server and microservice to microservice are using jsRPC.
 
 
+## Configure
+
+Please, run:
+
+```bash
+npm install
+```
+
 ## Microservices
 
 
