@@ -1,0 +1,30 @@
+.loading {
+  align-items: center;
+  justify-content: center;
+}
+.loading .spinner {
+  width: 6rem;
+  height: 6rem;
+}
+.clickable {
+  cursor: pointer;
+}
+.left {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.responsive-label {
+  align-items: center;
+}
+.responsive-label input[type=text],
+.responsive-label input[type=password],
+.responsive-label input[type=number],
+.responsive-label select,
+.responsive-label textarea {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .responsive-label .col-md-3 {
+    text-align: right;
+  }
+}

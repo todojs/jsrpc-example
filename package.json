@@ -1,0 +1,20 @@
+{
+  "name": "jsrpc-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/courses.js",
+  "scripts": {
+    "test": "mocha ./test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@todojs/jsrpc": "0.0.3",
+    "http-server": "^0.9.0",
+    "nedb-promises": "^3.0.5"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
+}

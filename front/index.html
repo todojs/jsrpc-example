@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>example</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<header>
+  <a href="#/" class="logo">jsRPC</a>
+  <a href="#/courses" class="button">Courses</a>
+  <a href="#/teachers" class="button">Teachers</a>
+  <a href="#/students" class="button">Students</a>
+</header>
+
+<div id="container">
+
+  <div id="home" class="view">
+    <h1>Home</h1>
+    <p>This is a simple example of jsRPC</p>
+  </div>
+
+  <div id="courses" class="view hidden">
+    <div class="row">
+      <div class="col-sm-6"><h1>Courses</h1></div>
+      <div class="col-sm-6 left">
+        <button id="addCourse">&nbsp;+&nbsp;</button>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Level</th>
+          <th>Hours</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody class="clickable"></tbody>
+    </table>
+  </div>
+
+  <div id="course" class="view hidden">
+    <h1>Course</h1>
+    <form>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="course-name">Name</label></div>
+        <div class="col-sm-12 col-md-6"><input type="text" placeholder="Name" id="course-name"></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="course-description">Description</label></div>
+        <div class="col-sm-12 col-md-6"><textarea id="course-description" placeholder="Description"></textarea></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="course-duration">Duration</label></div>
+        <div class="col-sm-12 col-md-6"><input id="course-duration" type="text" placeholder="duration"></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="course-hours">Hours</label></div>
+        <div class="col-sm-12 col-md-6"><input id="course-hours" type="number" placeholder="hours"></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="course-level">Level</label></div>
+        <div class="col-sm-12 col-md-6"><select id="course-level">
+          <option>low</option>
+          <option>medium</option>
+          <option>high</option>
+        </select></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="course-type">Type</label></div>
+        <div class="col-sm-12 col-md-6"><select id="course-type">
+          <option>online</option>
+          <option>in person</option>
+        </select></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="course-teachers">Teachers</label></div>
+        <div class="col-sm-12 col-md-6"><select id="course-teachers" size="3">
+        </select></div>
+        <div class="col-sm-12 col-md-1">
+          <button id="course-teachers-add">&nbsp;+&nbsp;</button>
+        </div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="course-students">Students</label></div>
+        <div class="col-sm-12 col-md-6"><select id="course-students" size="10">
+        </select></div>
+        <div class="col-sm-12 col-md-1">
+          <button id="course-students-add">&nbsp;+&nbsp;</button>
+        </div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3">&nbsp;</div>
+        <div class="col-sm-12 col-md-6 left">
+          <button id="course-cancel">Cancel</button>
+          <button id="course-delete">Delete</button>
+          <button id="course-save">Save</button>
+        </div>
+      </div>
+    </form>
+    <input type="checkbox" id="modal-teachers" class="modal">
+    <div>
+        <div class="card large">
+          <h3 class="section">Select teachers</h3>
+          <div class="section" style="text-align: center;">
+            <div class="row">
+              <div class="col-sm-5">Availables</div>
+              <div class="col-sm-2"></div>
+              <div class="col-sm-5">Selected</div>
+            </div>
+            <div class="row responsive-label">
+              <div class="col-sm-5"><select id="modal-teachers-available" size="5" multiple></select></div>
+              <div class="col-sm-2">
+                <button id="modal-teachers-add">-&gt;</button>
+                <br/>
+                <button id="modal-teachers-remove">&lt;-</button>
+              </div>
+              <div class="col-sm-5"><select id="modal-teachers-selected" size="5" multiple></select></div>
+            </div>
+          </div>
+          <p class="left">
+            <button id="modal-teachers-cancel">Cancel</button>
+            <button id="modal-teachers-ok">Ok</button>
+          </p>
+        </div>
+    </div>
+    <input type="checkbox" id="modal-students" class="modal">
+    <div>
+      <div class="card large">
+        <h3 class="section">Select students</h3>
+        <div class="section" style="text-align: center;">
+          <div class="row">
+            <div class="col-sm-5">Availables</div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-5">Selected</div>
+          </div>
+          <div class="row responsive-label">
+            <div class="col-sm-5"><select id="modal-students-available" size="5" multiple></select></div>
+            <div class="col-sm-2">
+              <button id="modal-students-add">-&gt;</button>
+              <br/>
+              <button id="modal-students-remove">&lt;-</button>
+            </div>
+            <div class="col-sm-5"><select id="modal-students-selected" size="5" multiple></select></div>
+          </div>
+        </div>
+        <p class="left">
+          <button id="modal-students-cancel">Cancel</button>
+          <button id="modal-students-ok">Ok</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="teachers" class="view hidden">
+    <div class="row">
+      <div class="col-sm-6"><h1>Teachers</h1></div>
+      <div class="col-sm-6 left">
+        <button id="addTeacher">&nbsp;+&nbsp;</button>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Lastname</th>
+          <th>email</th>
+        </tr>
+      </thead>
+      <tbody class="clickable"></tbody>
+    </table>
+  </div>
+
+  <div id="teacher" class="view hidden">
+    <h1>Teacher</h1>
+    <form>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="teacher-name">Name</label></div>
+        <div class="col-sm-12 col-md-6"><input type="text" placeholder="Name" id="teacher-name"></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="teacher-lastname">Lastname</label></div>
+        <div class="col-sm-12 col-md-6"><input type="text" placeholder="Lastname" id="teacher-lastname"></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="teacher-biography">Biography</label></div>
+        <div class="col-sm-12 col-md-6"><textarea id="teacher-biography" placeholder="Biography"></textarea></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="teacher-email">Email</label></div>
+        <div class="col-sm-12 col-md-6"><input type="text" placeholder="email" id="teacher-email"></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3">&nbsp;</div>
+        <div class="col-sm-12 col-md-6 left">
+          <button id="teacher-cancel">Cancel</button>
+          <button id="teacher-delete">Delete</button>
+          <button id="teacher-save">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="students" class="view hidden">
+    <div class="row">
+      <div class="col-sm-6"><h1>Students</h1></div>
+      <div class="col-sm-6 left">
+        <button id="addStudent">&nbsp;+&nbsp;</button>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Lastname</th>
+          <th>email</th>
+        </tr>
+      </thead>
+      <tbody class="clickable"></tbody>
+    </table>
+  </div>
+
+  <div id="student" class="view hidden">
+    <h1>Studend</h1>
+    <form>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="student-name">Name</label></div>
+        <div class="col-sm-12 col-md-6"><input type="text" placeholder="Name" id="student-name"></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="student-lastname">Lastname</label></div>
+        <div class="col-sm-12 col-md-6"><input type="text" placeholder="Lastname" id="student-lastname"></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3"><label for="student-email">Email</label></div>
+        <div class="col-sm-12 col-md-6"><input type="text" placeholder="email" id="student-email"></div>
+      </div>
+      <div class="row responsive-label">
+        <div class="col-sm-12 col-md-3">&nbsp;</div>
+        <div class="col-sm-12 col-md-6 left">
+          <button id="student-cancel">Cancel</button>
+          <button id="student-delete">Delete</button>
+          <button id="student-save">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<input type="checkbox" id="modal-loading" class="modal">
+<div class="loading">
+  <div class="spinner"></div>
+</div>
+
+<input type="checkbox" id="modal-error" class="modal">
+<div>
+  <div class="card error">
+    <label for="modal-error" class="modal-close"></label>
+    <h3 class="section">Error</h3>
+    <p class="section"></p>
+  </div>
+</div>
+
+<input type="checkbox" id="modal-confirm" class="modal">
+<div>
+  <div class="card">
+    <h3 class="section">Confirm</h3>
+    <p class="section"></p>
+    <p class="left">
+      <button id="modal-confirm-no">No</button>
+      <button id="modal-confirm-yes">Yes</button>
+    </p>
+  </div>
+</div>
+
+
+<script src="./stubify.js"></script>
+<script src="./courses-stub.js"></script>
+<script src="./teachers-stub.js"></script>
+<script src="./students-stub.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
